@@ -1,0 +1,41 @@
+package com.ark.ds.stacks;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Stack implementation { not full implementation, this is being developed using TDD :)}
+ * @param <E>
+ * @author AbdulRabKhan
+ */
+public class Stack<E> implements  IStack<E> {
+    private transient List<E> stackElements = new ArrayList<>();
+    private int size = 0;
+
+    public Stack() {
+        super();
+    }
+
+    public void push(E e) {
+        stackElements.add(e);
+        size++;
+    }
+
+    public E pop() {
+        if (isEmpty()) {
+            throw new ElementNotFoundException("Stack is Empty");
+        }
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return size++;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size==0;
+    }
+}
