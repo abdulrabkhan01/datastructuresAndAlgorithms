@@ -21,7 +21,7 @@ public class StacksSpec {
         //Given - An Empty Stack
         IStack<String> stack = new Stack<>();
         //When an element added
-        stack.add("A");
+        stack.push("A");
         //Then its size should be 1
         Assert.assertEquals(1,stack.size());
 
