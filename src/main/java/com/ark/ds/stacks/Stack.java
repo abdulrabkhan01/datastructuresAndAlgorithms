@@ -26,7 +26,9 @@ public class Stack<E> implements  IStack<E> {
         if (isEmpty()) {
             throw new ElementNotFoundException("Stack is Empty");
         }
-        return null;
+        E element = stackElements.remove(size-1);
+        --size;
+        return element;
     }
 
     @Override
