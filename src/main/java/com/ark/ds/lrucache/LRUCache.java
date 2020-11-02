@@ -22,7 +22,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     private LinkedListNode tail = null;
 
     public LRUCache(int capacity) {
-        if (capacity <=0) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than or equal to zero");
         }
         this.capacity = capacity;
@@ -42,10 +42,10 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     }
 
     private void addNewNode(LinkedListNode<K, V> node) {
-        if (size+1 > capacity) {
+        if (size + 1 > capacity) {
             //Check if adding new item causes size to goes out of the capacity
-            LinkedListNode<K,V> prev = tail.prev;
-            prev.next=null;
+            LinkedListNode<K, V> prev = tail.prev;
+            prev.next = null;
             tail = prev;
             //Remove from Map
             leastRecentlyUsedMap.remove(tail.key);
@@ -85,9 +85,9 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     }
 
     private void removeLeastRecentlyUsedNode(LinkedListNode<K, V> existingNode) {
-        LinkedListNode<K,V> prev = existingNode.prev;
-        LinkedListNode<K,V> next = existingNode.next;
-        if (prev !=null) {
+        LinkedListNode<K, V> prev = existingNode.prev;
+        LinkedListNode<K, V> next = existingNode.next;
+        if (prev != null) {
             prev.next = next;
         }
         if (next != null) {
@@ -97,12 +97,17 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size != 0;
+    }
+
+    @Override
+    public boolean containsKey(K key) {
+        return leastRecentlyUsedMap.containsKey(key);
     }
 
     /**
