@@ -1,6 +1,7 @@
 package com.ark.ds.stacks;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,11 +11,12 @@ import java.util.List;
  * @author AbdulRabKhan
  */
 public class Stack<E> implements  IStack<E> {
-    private transient List<E> stackElements = new ArrayList<>();
+    private transient List<E> stackElements = Collections.emptyList();
     private int size = 0;
 
-    public Stack() {
+    public Stack(int capacity) {
         super();
+        stackElements = new ArrayList<>(capacity);
     }
 
     public void push(E e) {
