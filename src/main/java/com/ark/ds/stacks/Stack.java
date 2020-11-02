@@ -28,8 +28,7 @@ public class Stack<E> implements  IStack<E> {
         if (isEmpty()) {
             throw new ElementNotFoundException("Stack is Empty");
         }
-        E element = stackElements.remove(size-1);
-        --size;
+        E element = stackElements.remove(--size);
         return element;
     }
 
