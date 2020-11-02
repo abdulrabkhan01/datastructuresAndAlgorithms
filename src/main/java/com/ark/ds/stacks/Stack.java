@@ -35,7 +35,7 @@ public class Stack<E> implements  IStack<E> {
 
     @Override
     public int size() {
-        return size++;
+        return size;
     }
 
     @Override

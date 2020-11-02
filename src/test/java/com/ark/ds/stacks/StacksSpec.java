@@ -1,8 +1,7 @@
 package com.ark.ds.stacks;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 /**
  * <p> </p>Spec for TDD implementation for Stack class. </p>
  * @author  Abdul R
@@ -29,4 +28,18 @@ public class StacksSpec {
         //Then its size should be 1
         assertEquals(1,stack.size());
     }
+
+    @Test
+    @DisplayName("given  Stack with one elemnt When pop operation is called  its size should become zero")
+    public void stackWithOneElementPushAndPopSpec() {
+        //Given - An Empty Stack
+        IStack<String> stack = new Stack<>(1);
+        //When an element added
+        stack.push("A");
+        //Then its size should be 1
+        assertEquals(1,stack.size());
+        stack.pop();
+        assertTrue(stack.isEmpty());
+    }
+
 }
