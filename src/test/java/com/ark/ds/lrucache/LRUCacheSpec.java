@@ -54,6 +54,18 @@ public class LRUCacheSpec {
         assertTrue(lruCache.size()==maxCapacity);
     }
 
+    @Test
+    public void leastRecentlyUsedItemEvictedSpec1() {
+        final int maxCapacity = 2;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.put("B",2);
+        lruCache.put("C",3);
+        assertFalse(lruCache.containsKey("A"));
+    }
+
+
+
 
 
 }
