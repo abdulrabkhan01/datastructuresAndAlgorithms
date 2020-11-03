@@ -1,5 +1,4 @@
 package com.ark.ds.lrucache;
-
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,15 +10,14 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author AbdulR
  */
 public class LRUCache<K, V> implements ILRUCache<K, V> {
-
     private int size = 0;
-    private int capacity = 0;
+    private final int capacity;
     //Map bounded by max capacity defined by the constructor.
-    private transient Map<K, LinkedListNode<K, V>> leastRecentlyUsedMap = Collections.emptyMap();
+    private final transient Map<K, LinkedListNode<K, V>> leastRecentlyUsedMap ;
     //Head of the Linked List
-    private LinkedListNode head = null;
+    private LinkedListNode<K,V> head = null;
     //Tail of the Linked List
-    private LinkedListNode tail = null;
+    private LinkedListNode<K,V> tail = null;
 
     public LRUCache(int capacity) {
         if (capacity <= 0) {
@@ -162,7 +160,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     /**
      * Doubly linked list implementation, to store the most recently used node at the head of the list.
      */
-    private class LinkedListNode<K, V> {
+    private static class LinkedListNode<K, V> {
         K key;
         V data;
         LinkedListNode<K, V> next;

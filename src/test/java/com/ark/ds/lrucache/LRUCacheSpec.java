@@ -189,10 +189,4 @@ public class LRUCacheSpec {
         assertTrue(lruCache.getHeadKey()=="F");
         assertTrue(lruCache.getTailKey()=="D");
     }
-
-
-
-
-
-
 }
