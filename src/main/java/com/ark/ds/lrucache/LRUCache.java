@@ -105,14 +105,14 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
         //Move the Node to the front before returning value
         LinkedListNode<K, V> existingNode = leastRecentlyUsedMap.get(key);
         if (existingNode != null) {
-            removeLeastRecentlyUsedNode(existingNode);
-            moveNodeToHead(existingNode);
+            removeNode(existingNode); //Remove from current position
+            moveNodeToHead(existingNode); //Move to head
             value = existingNode.data;
         }
         return value;
     }
 
-    private void removeLeastRecentlyUsedNode(LinkedListNode<K, V> existingNode) {
+    private void removeNode(LinkedListNode<K, V> existingNode) {
         LinkedListNode<K, V> prev = existingNode.prev;
         LinkedListNode<K, V> next = existingNode.next;
         if (prev != null) {
@@ -147,6 +147,16 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
             temp = temp.next;
         }
         System.out.println(data);
+    }
+
+    @Override
+    public Object getHeadKey() {
+        return (this.head  != null) ? head.key : null;
+    }
+
+    @Override
+    public Object getTailKey() {
+        return (this.tail  != null) ? tail.key : null;
     }
 
     /**
