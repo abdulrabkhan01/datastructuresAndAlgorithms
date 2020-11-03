@@ -10,6 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LRUCacheSpec {
 
     @Test
+    public void zeroSizeMapCreationSpec() {
+        assertThrows(IllegalArgumentException.class ,() -> {new LRUCache<>(0);});
+    }
+
+    @Test
+    public void negativeSizeMapCreationSpec() {
+        assertThrows(IllegalArgumentException.class ,() -> {new LRUCache<>(-1);});
+    }
+
+    @Test
     public void emptyMapSizeShouldReturnZero() {
         ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
         assertTrue(lruCache.size()==0);
@@ -32,6 +42,16 @@ public class LRUCacheSpec {
         ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
         lruCache.put("K1",1);
         assertTrue(lruCache.containsKey("K1"));
+    }
+
+    @Test
+    public void maxCapacitySpec() {
+        final int maxCapacity = 10;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        for(int i=0; i< maxCapacity+1;i++) {
+            lruCache.put("K"+i,i);
+        }
+        assertTrue(lruCache.size()==maxCapacity);
     }
 
 
