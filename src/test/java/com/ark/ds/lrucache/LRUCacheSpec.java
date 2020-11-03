@@ -26,6 +26,12 @@ public class LRUCacheSpec {
     }
 
     @Test
+    public void emptyMapIsEmptyShouldReturnTrue() {
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
+        assertTrue(lruCache.isEmpty());
+    }
+
+    @Test
     public void nonEmptyMapShouldReturnActualSize() {
         ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
         lruCache.put("Key",1);
@@ -65,6 +71,44 @@ public class LRUCacheSpec {
         lruCache.put("C",3);
         lruCache.printData();
         assertFalse(lruCache.containsKey("A"));
+        assertTrue(lruCache.containsKey("B"));
+        assertTrue(lruCache.containsKey("C"));
+    }
+
+    @Test
+    public void leastRecentlyUsedItemEvictedSpec2() {
+        final int maxCapacity = 3;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.printData();
+        lruCache.put("B",2);
+        lruCache.printData();
+        lruCache.put("C",3);
+        lruCache.printData();
+        lruCache.put("D",4);
+        lruCache.printData();
+        assertFalse(lruCache.containsKey("A"));
+        assertTrue(lruCache.containsKey("B"));
+        assertTrue(lruCache.containsKey("C"));
+        assertTrue(lruCache.containsKey("D"));
+    }
+
+    @Test
+    public void leastRecentlyUsedItemEvictedSpec3() {
+        final int maxCapacity = 2;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.printData();
+        lruCache.put("B",2);
+        lruCache.printData();
+        lruCache.put("A",3);
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("A"));
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("B"));
+        lruCache.printData();
+        assertTrue(lruCache.get("A")==3);
+        lruCache.printData();
     }
 
 
