@@ -39,20 +39,24 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
             addNewNode(newNode);
             leastRecentlyUsedMap.put(key, newNode);
         } else {
-            //Remove from the current Position
-            LinkedListNode<K,V> prev = existingNode.prev;
-            LinkedListNode<K,V> next = existingNode.next;
-            if (prev != null) {
-                prev.next = next;
-            }
-            if(next != null) {
-                next.prev = prev;
-            }
-
-            existingNode.data = value;
-            //Add node to Head
-            moveNodeToHead(existingNode);
+            handleAlreadyPresentNode(value, existingNode);
         }
+    }
+
+    private void handleAlreadyPresentNode(V value, LinkedListNode<K, V> existingNode) {
+        //Remove from the current Position
+        LinkedListNode<K,V> prev = existingNode.prev;
+        LinkedListNode<K,V> next = existingNode.next;
+        if (prev != null) {
+            prev.next = next;
+        }
+        if(next != null) {
+            next.prev = prev;
+        }
+        //Update with new value for the key
+        existingNode.data = value;
+        //Add node to Head
+        moveNodeToHead(existingNode);
     }
 
     private void addNewNode(LinkedListNode<K, V> node) {
@@ -72,7 +76,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     }
 
     private void moveNodeToHead(LinkedListNode<K, V> node) {
-        if (node==head) {
+        if (node==head) { //If already head then return
             return;
         }
         if (head == null) {

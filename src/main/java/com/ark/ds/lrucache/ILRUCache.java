@@ -12,4 +12,5 @@ public interface ILRUCache<K,V> {
     int size();
     boolean isEmpty();
     boolean containsKey(K key);
+    void printData();
 }
