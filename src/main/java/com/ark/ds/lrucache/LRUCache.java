@@ -44,11 +44,12 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
     private void addNewNode(LinkedListNode<K, V> node) {
         if (size + 1 > capacity) {
             //Check if adding new item causes size to goes out of the capacity
+            //Remove from Map
+            leastRecentlyUsedMap.remove(tail.key);
+            //Remove tail from the List
             LinkedListNode<K, V> prev = tail.prev;
             prev.next = null;
             tail = prev;
-            //Remove from Map
-            leastRecentlyUsedMap.remove(tail.key);
 
         } else {
             size++;
@@ -58,8 +59,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
 
     private void moveNodeToHead(LinkedListNode<K, V> node) {
         if (head == null) {
-            head = node;
-            tail = node;
+            head = tail = node;
         } else {
             //Add as Head of the List
             node.next = head;
@@ -110,6 +110,17 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
         return leastRecentlyUsedMap.containsKey(key);
     }
 
+    @Override
+    public void printData() {
+        StringBuilder data = new StringBuilder();
+        LinkedListNode<K,V> temp = head;
+        while(temp != null) {
+            data.append(temp.toString()).append("->");
+            temp = temp.next;
+        }
+        System.out.println(data);
+    }
+
     /**
      * Doubly linked list implementation, to store the most recently used node at the head of the list.
      */
@@ -123,5 +134,11 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
             this.key = key;
             this.data = data;
         }
+
+        public String toString() {
+            return new StringBuilder(6)
+                    .append("{").append(key).append("->").append(data).append("}").toString();
+        }
+
     }
 }

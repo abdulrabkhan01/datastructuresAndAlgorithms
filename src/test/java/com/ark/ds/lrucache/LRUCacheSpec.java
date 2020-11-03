@@ -59,8 +59,11 @@ public class LRUCacheSpec {
         final int maxCapacity = 2;
         ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
         lruCache.put("A",1);
+        lruCache.printData();
         lruCache.put("B",2);
+        lruCache.printData();
         lruCache.put("C",3);
+        lruCache.printData();
         assertFalse(lruCache.containsKey("A"));
     }
 
