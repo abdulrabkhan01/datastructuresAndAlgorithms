@@ -49,10 +49,14 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
         LinkedListNode<K,V> next = existingNode.next;
         if (prev != null) {
             prev.next = next;
+            if (existingNode == tail) {
+                tail = prev;
+            }
         }
         if(next != null) {
             next.prev = prev;
         }
+
         //Update with new value for the key
         existingNode.data = value;
         //Add node to Head
@@ -66,7 +70,9 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
             leastRecentlyUsedMap.remove(tail.key);
             //Remove tail from the List
             LinkedListNode<K, V> prev = tail.prev;
-            prev.next = null;
+            if (prev != null) {
+                prev.next = null;
+            }
             tail = prev;
 
         } else {

@@ -111,6 +111,41 @@ public class LRUCacheSpec {
         lruCache.printData();
     }
 
+    @Test
+    public void leastRecentlyUsedItemEvictedSpec4() {
+        final int maxCapacity = 2;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.printData();
+        lruCache.put("A",2);
+        lruCache.printData();
+        lruCache.put("A",3);
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("A"));
+        lruCache.printData();
+        assertTrue(lruCache.get("A")==3);
+        assertTrue(lruCache.size()==1);
+    }
+
+    @Test
+    public void leastRecentlyUsedItemEvictedSpec5() {
+        final int maxCapacity = 2;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.printData();
+        lruCache.put("B",2);
+        lruCache.printData();
+        lruCache.put("A",3);
+        lruCache.printData();
+        lruCache.put("C",4);
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("A"));
+        assertTrue(lruCache.get("A")==3);
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("C"));
+        assertFalse(lruCache.containsKey("B"));
+    }
+
 
 
 
