@@ -147,7 +147,7 @@ public class LRUCacheSpec {
     }
 
     @Test
-    public void leastRecentlyUsedTailSpec1() {
+    public void leastRecentlyUsedHeadTailSpec1() {
         final int maxCapacity = 3;
         ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
         lruCache.put("A",1);
@@ -165,6 +165,29 @@ public class LRUCacheSpec {
         assertTrue(lruCache.containsKey("D"));
         assertTrue(lruCache.getHeadKey()=="D");
         assertTrue(lruCache.getTailKey()=="C");
+    }
+
+    @Test
+    public void leastRecentlyUsedHeadTailSpec2() {
+        final int maxCapacity = 3;
+        ILRUCache<String, Integer> lruCache = new LRUCache<>(maxCapacity);
+        lruCache.put("A",1);
+        lruCache.printData();
+        lruCache.put("B",2);
+        lruCache.printData();
+        lruCache.put("C",3);
+        lruCache.printData();
+        lruCache.put("D",4);
+        lruCache.printData();
+        lruCache.put("E",5);
+        lruCache.printData();
+        lruCache.put("F",5);
+        lruCache.printData();
+        assertTrue(lruCache.containsKey("F"));
+        assertTrue(lruCache.containsKey("E"));
+        assertTrue(lruCache.containsKey("D"));
+        assertTrue(lruCache.getHeadKey()=="F");
+        assertTrue(lruCache.getTailKey()=="D");
     }
 
 
