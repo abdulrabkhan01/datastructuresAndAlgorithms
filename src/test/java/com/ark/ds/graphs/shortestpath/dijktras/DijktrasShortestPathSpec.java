@@ -80,16 +80,7 @@ public class DijktrasShortestPathSpec {
 
     @Test
     public void dijktrasShortestPathSpec5() {
-        IGraph graph = new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 12);
-        graph.addEdge("A", "D", 15);
-        graph.addEdge("B", "C", 1);
-        graph.addEdge("B", "D", 5);
+        IGraph graph = getiGraph();
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
         List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "A", "D");
         StringBuilder path = new StringBuilder(shortestPath.size());
@@ -100,16 +91,7 @@ public class DijktrasShortestPathSpec {
     }
     @Test
     public void dijktrasShortestPathSpec6() {
-        IGraph graph = new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 12);
-        graph.addEdge("A", "D", 15);
-        graph.addEdge("B", "C", 1);
-        graph.addEdge("B", "D", 5);
+        IGraph graph = getiGraph();
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
         List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "A", "B");
         StringBuilder path = new StringBuilder(shortestPath.size());
@@ -120,16 +102,7 @@ public class DijktrasShortestPathSpec {
     }
     @Test
     public void dijktrasShortestPathSpec7() {
-        IGraph graph = new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 12);
-        graph.addEdge("A", "D", 15);
-        graph.addEdge("B", "C", 1);
-        graph.addEdge("B", "D", 5);
+        IGraph graph = getiGraph();
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
         List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "A", "C");
         StringBuilder path = new StringBuilder(shortestPath.size());
@@ -140,16 +113,7 @@ public class DijktrasShortestPathSpec {
     }
     @Test
     public void dijktrasShortestPathSpec8() {
-        IGraph graph = new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 12);
-        graph.addEdge("A", "D", 15);
-        graph.addEdge("B", "C", 1);
-        graph.addEdge("B", "D", 5);
+        IGraph graph = getiGraph();
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
         List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "B", "C");
         StringBuilder path = new StringBuilder(shortestPath.size());
@@ -160,6 +124,17 @@ public class DijktrasShortestPathSpec {
     }
     @Test
     public void dijktrasShortestPathSpec9() {
+        IGraph graph = getiGraph();
+        IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
+        List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "B", "D");
+        StringBuilder path = new StringBuilder(shortestPath.size());
+        for(Vertex v : shortestPath) {
+            path.append(v.getLabel());
+        }
+        assertEquals("BD",path.toString());
+    }
+
+    private IGraph getiGraph() {
         IGraph graph = new Graph();
         graph.addVertex("A");
         graph.addVertex("B");
@@ -170,14 +145,9 @@ public class DijktrasShortestPathSpec {
         graph.addEdge("A", "D", 15);
         graph.addEdge("B", "C", 1);
         graph.addEdge("B", "D", 5);
-        IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
-        List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "B", "D");
-        StringBuilder path = new StringBuilder(shortestPath.size());
-        for(Vertex v : shortestPath) {
-            path.append(v.getLabel());
-        }
-        assertEquals("BD",path.toString());
+        return graph;
     }
+
     private void initializeGraph(IGraph graph) {
         graph.addVertex("A");
         graph.addVertex("B");
