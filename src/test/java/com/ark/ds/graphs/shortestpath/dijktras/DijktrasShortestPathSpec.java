@@ -16,6 +16,13 @@ import java.util.List;
 public class DijktrasShortestPathSpec {
 
     @Test
+    public void dijktrasShortestPathEmptyGraph() {
+        IGraph graph = new Graph();
+        IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
+        assertThrows(IllegalArgumentException.class, ()->  {dijktrasShortestPath.findShortestPath(graph,"A","B");});
+    }
+
+    @Test
     public void dijktrasShortestPathSpec1() {
         IGraph graph = new Graph();
         initializeGraph(graph);
