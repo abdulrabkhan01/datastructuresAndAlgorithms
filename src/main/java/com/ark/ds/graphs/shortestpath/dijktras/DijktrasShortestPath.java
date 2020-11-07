@@ -47,15 +47,15 @@ public class DijktrasShortestPath implements IShortestPath {
     }
 
     private void validateEmptyGraph(IGraph graph) {
-        if(graph.isEmpty()) {
+        if (graph.isEmpty()) {
             throw new IllegalArgumentException("Shortest path cannot be found as Graph is Empty");
         }
     }
 
-    private List<Vertex> identifyShortestPath( Vertex destination, Map<Vertex, Vertex> prevVertexMap) {
+    private List<Vertex> identifyShortestPath(Vertex destination, Map<Vertex, Vertex> prevVertexMap) {
         List<Vertex> shortestPath = new ArrayList<>(prevVertexMap.size());
         Vertex temp = destination;
-        while(temp !=null) {
+        while (temp != null) {
             shortestPath.add(temp);
             temp = prevVertexMap.get(temp);
         }
@@ -65,11 +65,8 @@ public class DijktrasShortestPath implements IShortestPath {
 
     private void initializeDistanceMap(Map<Vertex, Integer> distanceMap, Set<Vertex> vertices, Vertex source) {
         for (Vertex vertex : vertices) {
-            if (vertex.equals(source)) {
-                distanceMap.put(source, 0);
-            } else {
-                distanceMap.put(vertex, Integer.MAX_VALUE);
-            }
+            distanceMap.put(vertex, Integer.MAX_VALUE);
         }
+        distanceMap.put(source, 0);
     }
 }
