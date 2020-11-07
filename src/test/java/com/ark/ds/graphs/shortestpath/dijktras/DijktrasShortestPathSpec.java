@@ -25,11 +25,13 @@ public class DijktrasShortestPathSpec {
         graph.addEdge("B", "C", 2);
         graph.addEdge("A", "C", 5);
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
-        List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, new Vertex("A"), new Vertex("C"));
+        List<Vertex> shortestPath = dijktrasShortestPath.findShortestPath(graph, "A", "C");
         StringBuilder path = new StringBuilder(shortestPath.size());
         for(Vertex v : shortestPath) {
             path.append(v.getLabel());
         }
         assertEquals("ABC",path.toString());
     }
+
+
 }

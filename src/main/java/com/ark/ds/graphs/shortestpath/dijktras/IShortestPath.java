@@ -3,5 +3,5 @@ import com.ark.ds.graphs.*;
 import java.util.List;
 
 public interface IShortestPath {
-    List<Vertex> findShortestPath(IGraph graph, Vertex source, Vertex destination);
+    List<Vertex> findShortestPath(IGraph graph, String source, String destination);
 }

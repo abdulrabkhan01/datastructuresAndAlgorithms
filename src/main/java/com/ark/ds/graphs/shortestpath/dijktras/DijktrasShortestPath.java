@@ -11,7 +11,9 @@ import java.util.*;
  */
 public class DijktrasShortestPath implements IShortestPath {
     @Override
-    public List<Vertex> findShortestPath(IGraph graph, Vertex source, Vertex destination) {
+    public List<Vertex> findShortestPath(IGraph graph, String sourceStr, String destinationStr) {
+        Vertex source = new Vertex(sourceStr);
+        Vertex destination = new Vertex(destinationStr);
         Set<Vertex> vertices = graph.getAllVertices();
         Map<Vertex, Integer> distanceMap = new HashMap<>();
         Map<Vertex, Vertex> prevVertexMap = new HashMap<>();
