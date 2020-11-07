@@ -29,15 +29,19 @@ public class DijktrasShortestPath implements IShortestPath {
         while (!queue.isEmpty()) {
             Vertex vertex = queue.poll();
             List<Edge> edges = graph.getEdges(vertex);
-            if (edges != null) {
-                for (Edge edge : edges) {
-                    int dist = distanceMap.get(vertex) + edge.getCost();
-                    if (dist < distanceMap.get(edge.getEnd())) {
-                        distanceMap.put(edge.getEnd(), dist);
-                        prevVertexMap.put(edge.getEnd(), vertex);
-                    }
-                    queue.add(edge.getEnd());
+            calculateMinDistance(distanceMap, prevVertexMap, queue, vertex, edges);
+        }
+    }
+
+    private void calculateMinDistance(Map<Vertex, Integer> distanceMap, Map<Vertex, Vertex> prevVertexMap, Queue<Vertex> queue, Vertex vertex, List<Edge> edges) {
+        if (edges != null) {
+            for (Edge edge : edges) {
+                int dist = distanceMap.get(vertex) + edge.getCost();
+                if (dist < distanceMap.get(edge.getEnd())) {
+                    distanceMap.put(edge.getEnd(), dist);
+                    prevVertexMap.put(edge.getEnd(), vertex);
                 }
+                queue.add(edge.getEnd());
             }
         }
     }
