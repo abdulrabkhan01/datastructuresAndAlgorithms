@@ -29,4 +29,9 @@ public class Graph implements IGraph {
         return verticesMap.get(vertex);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return verticesMap.isEmpty();
+    }
+
 }

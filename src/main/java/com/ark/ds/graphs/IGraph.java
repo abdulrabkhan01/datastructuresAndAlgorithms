@@ -11,4 +11,5 @@ public interface IGraph {
     void addEdge(String label1, String label2, int cost);
     Set<Vertex> getAllVertices();
     List<Edge> getEdges(Vertex vertex);
+    boolean isEmpty();
 }

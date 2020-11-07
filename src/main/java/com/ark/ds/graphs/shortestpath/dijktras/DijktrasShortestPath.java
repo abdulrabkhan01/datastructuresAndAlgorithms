@@ -12,6 +12,7 @@ import java.util.*;
 public class DijktrasShortestPath implements IShortestPath {
     @Override
     public List<Vertex> findShortestPath(IGraph graph, String sourceStr, String destinationStr) {
+        validateEmptyGraph(graph);
         Vertex source = new Vertex(sourceStr);
         Vertex destination = new Vertex(destinationStr);
         Set<Vertex> vertices = graph.getAllVertices();
@@ -35,6 +36,12 @@ public class DijktrasShortestPath implements IShortestPath {
             }
         }
         return identifyShortestPath(destination, prevVertexMap);
+    }
+
+    private void validateEmptyGraph(IGraph graph) {
+        if(graph.isEmpty()) {
+            throw new IllegalArgumentException("Shortest path cannot be found as Graph is Empty");
+        }
     }
 
     private List<Vertex> identifyShortestPath( Vertex destination, Map<Vertex, Vertex> prevVertexMap) {
