@@ -20,6 +20,11 @@ public class DijktrasShortestPath implements IShortestPath {
         Map<Vertex, Vertex> prevVertexMap = new HashMap<>();
         initializeDistanceMap(distanceMap, vertices, source);
         Queue<Vertex> queue = new LinkedList<>();
+        findShortestPath(graph, source, distanceMap, prevVertexMap, queue);
+        return identifyShortestPath(destination, prevVertexMap);
+    }
+
+    private void findShortestPath(IGraph graph, Vertex source, Map<Vertex, Integer> distanceMap, Map<Vertex, Vertex> prevVertexMap, Queue<Vertex> queue) {
         queue.add(source);
         while (!queue.isEmpty()) {
             Vertex vertex = queue.poll();
@@ -35,7 +40,6 @@ public class DijktrasShortestPath implements IShortestPath {
                 }
             }
         }
-        return identifyShortestPath(destination, prevVertexMap);
     }
 
     private void validateEmptyGraph(IGraph graph) {
