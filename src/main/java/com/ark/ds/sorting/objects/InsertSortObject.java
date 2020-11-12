@@ -12,7 +12,7 @@ public class InsertSortObject<ObjectType extends Comparable> {
             while (indexToCompare > 0 && array[indexToCompare - 1].compareTo(currentElement) > 0) {
                 array[indexToCompare] = array[--indexToCompare]; // Perform Shifting to make place for current element.
             }
-            //Place Current Element at its current postion
+            //Place Current Element at its current position
             array[indexToCompare] = currentElement;
         }
     }
