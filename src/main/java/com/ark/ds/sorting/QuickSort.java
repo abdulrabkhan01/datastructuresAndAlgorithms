@@ -12,6 +12,7 @@ public enum QuickSort {
         quickSort(a, 0, a.length-1);
     }
     private void quickSort(int a[], int start, int end) {
+        if (start==end) return;
         if (start < end) {
             int pivot = partitionArrayOverPivot(a, start, end);
             quickSort(a, 0, pivot - 1);
@@ -45,6 +46,7 @@ public enum QuickSort {
     }
 
     private void swap(int[] a, int index1, int index2) {
+        if (index1 == index2) return;
         int temp = a[index1];
         a[index1] = a[index2];
         a[index2] = temp;
