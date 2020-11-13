@@ -1,5 +1,7 @@
 package com.ark.ds.sorting;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * <p> Quick Sort using random element as Pivot. </p>
  *
@@ -9,15 +11,30 @@ public enum QuickSort {
     INSTANCE;
 
     public void sort(int a[]) {
-        quickSort(a, 0, a.length-1);
+        quickSort(a, 0, a.length - 1);
     }
+
     private void quickSort(int a[], int start, int end) {
-        if (start==end) return;
+        if (start == end) return;
         if (start < end) {
-            int pivot = partitionArrayOverPivot(a, start, end);
+            int pivot = partitionArrayOverRandomPivot(a, start, end);
             quickSort(a, 0, pivot - 1);
             quickSort(a, pivot + 1, end);
         }
+    }
+
+    /**
+     * <p> Partition the Array over Random Pivot from Start to End. </p>
+     *
+     * @param a     - Array to be sorted.
+     * @param start - Start Index.
+     * @param end   - End Index.
+     * @return - Pivot Index.
+     */
+    private int partitionArrayOverRandomPivot(int[] a, int start, int end) {
+        int random = ThreadLocalRandom.current().nextInt(start, end + 1);
+        swap(a, start, random); //Swapping with start to reuse- partitionArrayOverStartPivot method
+        return partitionArrayOverStartPivot(a, start, end);
     }
 
     /**
@@ -30,7 +47,7 @@ public enum QuickSort {
      * @param end   - End Index.
      * @return - Pivot Index.
      */
-    private int partitionArrayOverPivot(int[] a, int start, int end) {
+    private int partitionArrayOverStartPivot(int[] a, int start, int end) {
         int pivot = a[start];
         int indexToFindPivotCorrectPos = start + 1;
         //Find Correct Location for the Pivot
