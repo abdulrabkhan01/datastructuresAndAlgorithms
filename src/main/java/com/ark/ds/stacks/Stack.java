@@ -7,16 +7,23 @@ import java.util.List;
 
 /**
  * Stack implementation { not full implementation, this is being developed using TDD :)}
+ *
  * @param <E>
  * @author AbdulRabKhan
  */
-public class Stack<E> implements  IStack<E> {
+public class Stack<E> implements IStack<E> {
     private transient List<E> stackElements = Collections.emptyList();
     private int size = 0;
+    private final int DEFAULT_CAPACITY = 10;
 
     public Stack(int capacity) {
         super();
         stackElements = new ArrayList<>(capacity);
+    }
+
+    public Stack() {
+        super();
+        stackElements = new ArrayList<>(DEFAULT_CAPACITY);
     }
 
     public void push(E e) {
@@ -39,6 +46,6 @@ public class Stack<E> implements  IStack<E> {
 
     @Override
     public boolean isEmpty() {
-        return size==0;
+        return size == 0;
     }
 }
