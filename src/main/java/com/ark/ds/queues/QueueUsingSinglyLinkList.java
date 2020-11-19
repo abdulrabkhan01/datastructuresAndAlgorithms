@@ -4,12 +4,15 @@ package com.ark.ds.queues;
  * <p> Queue using Singly Link List.</p>
  *
  * @param <T>
+ * @author AbdulR
  */
 public class QueueUsingSinglyLinkList<T> implements IQueue<T> {
     private Node head, tail;
+    private int size = 0;
 
     @Override
     public void enqueue(T data) {
+        size++;
         addAtTailOfList(data);
     }
 
@@ -25,8 +28,19 @@ public class QueueUsingSinglyLinkList<T> implements IQueue<T> {
 
     @Override
     public T dequeue() {
+        --size;
         //No Element
         return removeFromHead();
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     private T removeFromHead() {
