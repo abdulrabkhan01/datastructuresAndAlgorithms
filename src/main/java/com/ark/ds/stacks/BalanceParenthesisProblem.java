@@ -2,7 +2,6 @@ package com.ark.ds.stacks;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * <p> Balance parenthesis using Stack </p>
@@ -51,24 +50,25 @@ public enum BalanceParenthesisProblem {
     //Get the Character after from the Stack and compare if it matches with the closing bracket
     private boolean openingClosingBracketNotMatched(IStack<Character> stack, Character character) {
         //Check if the Opening Bracket that is present at Stack Top matches the opening bracket for the current element
-        return notEquals(stack.pop(), getMatchingOpeningBracket(character).get());
+        return notEquals(stack.pop(), getMatchingOpeningBracket(character));
     }
 
-    private boolean notEquals(Character openingBracked, Character character) {
-        return !openingBracked.equals(character);
+    private boolean notEquals(Character openingBracket, Character character) {
+        return !openingBracket.equals(character);
     }
 
-    private Optional<Character> getMatchingOpeningBracket(Character character) {
-        return Optional.ofNullable(BRACKET_MATCHING_MAP.get(character));
+    private Character getMatchingOpeningBracket(Character character) {
+        Character matchingValue = BRACKET_MATCHING_MAP.get(character);
+        return matchingValue != null ? matchingValue : ' ';
     }
 
     //Opening brackets are present in the Map Values.
     private boolean isOpeningBracket(Character character) {
-        return BRACKET_MATCHING_MAP.values().contains(character);
+        return BRACKET_MATCHING_MAP.containsValue(character);
     }
 
     //Closing brackets are present in Map keys.
     private boolean isClosingBracket(Character character) {
-        return BRACKET_MATCHING_MAP.keySet().contains(character);
+        return BRACKET_MATCHING_MAP.containsKey(character);
     }
 }
