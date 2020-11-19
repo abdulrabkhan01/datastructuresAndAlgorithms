@@ -1,8 +1,6 @@
 package com.ark.ds.stacks;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,9 +10,9 @@ import java.util.List;
  * @author AbdulRabKhan
  */
 public class Stack<E> implements IStack<E> {
-    private transient List<E> stackElements = Collections.emptyList();
+    private transient final List<E> stackElements;
     private int size = 0;
-    private final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
     public Stack(int capacity) {
         super();
@@ -35,8 +33,7 @@ public class Stack<E> implements IStack<E> {
         if (isEmpty()) {
             throw new ElementNotFoundException("Stack is Empty");
         }
-        E element = stackElements.remove(--size);
-        return element;
+        return stackElements.remove(--size);
     }
 
     @Override

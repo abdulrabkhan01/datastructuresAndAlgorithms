@@ -28,7 +28,7 @@ public enum BalanceParenthesisProblem {
      */
     public boolean checkBalance(String str) {
         validate(str);
-        IStack<Character> stack = new Stack<>(str.length());
+        IStack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             //Push the Opening Bracket to Stack
             Character character = str.charAt(i);
