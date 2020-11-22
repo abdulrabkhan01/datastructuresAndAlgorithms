@@ -2,12 +2,13 @@ package com.ark.ds.string;
 
 /**
  * <p> Class to implement logic for checking whether a given sub sequence exists in a given String using
- * Brute Force Solution, Running time O(n2) - read as Big O of N Square.</p>
+ * Brute Force Solution</p>
  *
  * @author AbdulR.
  */
 public enum StringSubSequence {
     INSTANCE;
+
 
     public boolean checkSubSequence(String str, String sub) {
         validate(str, sub);
