@@ -1,0 +1,40 @@
+package com.ark.ds.string;
+
+/**
+ * <p> Class to implement logic for checking whether a given sub sequence exists in a given String using
+ * Brute Force Solution, Running time O(n2) - read as Big O of N Square.</p>
+ *
+ * @author AbdulR.
+ */
+public enum StringSubSequence {
+    INSTANCE;
+
+    public boolean checkSubSequence(String str, String sub) {
+        validate(str, sub);
+        int strLen = str.length();
+        int subLen = sub.length();
+        if (subLen > strLen) return false;
+        for (int index = 0; index <= strLen - subLen; index++) {
+            int cnt = 0;
+            while (cnt < subLen && sub.charAt(cnt) == str.charAt(index + cnt)) {
+                cnt++;
+            }
+            if (cnt == subLen) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void validate(String str, String sub) {
+        validate(str);
+        validate(sub);
+    }
+
+    private void validate(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid String");
+        }
+    }
+
+}
