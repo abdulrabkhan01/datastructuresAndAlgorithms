@@ -10,7 +10,7 @@ public class BinaryTree<E> implements IBinaryTree<E> {
 
     @Override
     public void add(E data) {
-        size++;
+        size++; //Increase the node size
         TreeNode node = new TreeNode(data);
         if (root == null) {
             root = node;
