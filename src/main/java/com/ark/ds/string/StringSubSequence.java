@@ -17,7 +17,7 @@ public enum StringSubSequence {
         for (int index = 0; index <= strLen - subLen; index++) {
             int cnt = 0;
             while (cnt < subLen && sub.charAt(cnt) == str.charAt(index + cnt)) {
-                cnt++;
+                cnt++; //Matching Window found
             }
             if (cnt == subLen) {
                 return true;
