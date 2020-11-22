@@ -1,7 +1,6 @@
 package com.ark.ds.stacks;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p> Balance parenthesis using Stack </p>
@@ -34,23 +33,22 @@ public enum BalanceParenthesisProblem {
             Character character = str.charAt(i);
             if (isOpeningBracket(character)) {
                 stack.push(character);
-            } else if (isClosingBracket(character) && !stack.isEmpty()
-                    && openingClosingBracketNotMatched(stack, character)) {
+            } else if (isClosingBracket(character) && notMatched(stack, character)) {
                 return false;
             }
         }
         return stack.isEmpty(); //If String is Balance then stack should be empty.
     }
 
+    private boolean notMatched(IStack<Character> stack, Character character) {
+        //Check if the Opening Bracket that is present at Stack Top matches the opening bracket for the current element
+        return !stack.isEmpty()
+                && notEquals(stack.pop(), getMatchingOpeningBracket(character));
+    }
+
     private void validate(String str) {
         if (str == null || str.trim().isEmpty())
             throw new IllegalArgumentException("Operation not Supported for null/blank Strings");
-    }
-
-    //Get the Character after from the Stack and compare if it matches with the closing bracket
-    private boolean openingClosingBracketNotMatched(IStack<Character> stack, Character character) {
-        //Check if the Opening Bracket that is present at Stack Top matches the opening bracket for the current element
-        return notEquals(stack.pop(), getMatchingOpeningBracket(character));
     }
 
     private boolean notEquals(Character openingBracket, Character character) {
