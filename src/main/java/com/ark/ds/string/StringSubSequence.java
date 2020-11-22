@@ -9,7 +9,6 @@ package com.ark.ds.string;
 public enum StringSubSequence {
     INSTANCE;
 
-
     public boolean checkSubSequence(String str, String sub) {
         validate(str, sub);
         int strLen = str.length();
@@ -20,9 +19,7 @@ public enum StringSubSequence {
             while (cnt < subLen && sub.charAt(cnt) == str.charAt(index + cnt)) {
                 cnt++; //Matching Window found
             }
-            if (cnt == subLen) {
-                return true;
-            }
+            if (cnt == subLen) return true;
         }
         return false;
     }
@@ -37,5 +34,4 @@ public enum StringSubSequence {
             throw new IllegalArgumentException("Invalid String");
         }
     }
-
 }
