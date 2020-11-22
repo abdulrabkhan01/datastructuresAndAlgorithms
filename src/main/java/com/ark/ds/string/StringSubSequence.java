@@ -13,7 +13,7 @@ public enum StringSubSequence {
         validate(str, sub);
         int strLen = str.length();
         int subLen = sub.length();
-        if (subLen > strLen) return false;
+        if (subLen > strLen) return false; //As sub string length must be <= original string length
         for (int index = 0; index <= strLen - subLen; index++) {
             int cnt = 0;
             while (cnt < subLen && sub.charAt(cnt) == str.charAt(index + cnt)) {
