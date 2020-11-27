@@ -26,5 +26,4 @@ public class TrieSpec {
         iTrie.addWord("Success");
         assertTrue(iTrie.checkValidWord("Success"));
     }
-
 }
