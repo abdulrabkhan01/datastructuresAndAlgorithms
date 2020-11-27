@@ -3,6 +3,7 @@ package com.ark.ds.sorting.objects;
 /**
  * <p> Insertion Sort for Objects </p>
  */
+@SuppressWarnings("rawtypes")
 public class InsertSortObject<ObjectType extends Comparable> {
 
     public void sort(ObjectType[] array) {

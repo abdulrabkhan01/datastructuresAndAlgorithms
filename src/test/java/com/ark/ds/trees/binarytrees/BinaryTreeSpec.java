@@ -13,13 +13,13 @@ public class BinaryTreeSpec {
 
     @Test
     public void testEmptyTree() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         assertTrue(binaryTree.isEmpty());
     }
 
     @Test
     public void testTreeWithOneNode() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         String data = "abc";
         binaryTree.add(data);
         assertEquals(binaryTree.size(), 1);
@@ -30,7 +30,7 @@ public class BinaryTreeSpec {
 
     @Test
     public void testTreeWithTwoNodes() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         String data1 = "A"; //Should be added as Root
         String data2 = "B"; //Should be added as Left Child of Root
         binaryTree.add(data1);
@@ -43,7 +43,7 @@ public class BinaryTreeSpec {
 
     @Test
     public void testTreeWithThreeNodes() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         String data1 = "A"; //Should be added as Root
         String data2 = "B"; //Should be added as Left Child of Root
         String data3 = "C"; //Should be added as Right Child of Root
@@ -58,7 +58,7 @@ public class BinaryTreeSpec {
 
     @Test
     public void testTreeWithThreeFourNodes() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         String data1 = "A"; //Should be added as Root
         String data2 = "B"; //Should be added as Left Child of Root
         String data3 = "C"; //Should be added as Right Child of Root
@@ -75,7 +75,7 @@ public class BinaryTreeSpec {
 
     @Test
     public void testTreeWithFiveNodes() {
-        BinaryTree<String> binaryTree = new BinaryTree<>();
+        IBinaryTree<String> binaryTree = new BinaryTree<>();
         String data1 = "A"; //Should be added as Root
         String data2 = "B"; //Should be added as Left Child of Root
         String data3 = "C"; //Should be added as Right Child of Root
@@ -86,11 +86,7 @@ public class BinaryTreeSpec {
         binaryTree.add(data3);
         binaryTree.add(data4);
         binaryTree.add(data5);
-        assertEquals(binaryTree.size(), 5);
-        assertEquals("A-B-D-E-C-", binaryTree.preOrder());
         assertEquals("D-B-E-A-C-", binaryTree.inOrder());
         assertEquals("D-E-B-C-A-", binaryTree.postOrder());
     }
-
-
 }

@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author AbdulR
  */
+@SuppressWarnings("ALL")
 public class QuickSortObject<ObjectType extends Comparable> {
 
     public void sort(ObjectType[] a) {

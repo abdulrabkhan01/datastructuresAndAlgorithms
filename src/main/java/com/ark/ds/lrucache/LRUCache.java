@@ -175,16 +175,5 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
             return new StringBuilder(6)
                     .append("{").append(key).append("->").append(data).append("}").toString();
         }
-
-        @Override
-        public int hashCode() {
-            return super.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-
     }
 }

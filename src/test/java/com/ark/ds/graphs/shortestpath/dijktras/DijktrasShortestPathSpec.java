@@ -19,7 +19,7 @@ public class DijktrasShortestPathSpec {
     public void dijktrasShortestPathEmptyGraph() {
         IGraph graph = new Graph();
         IShortestPath dijktrasShortestPath = new DijktrasShortestPath();
-        assertThrows(IllegalArgumentException.class, ()->  {dijktrasShortestPath.findShortestPath(graph,"A","B");});
+        assertThrows(IllegalArgumentException.class, ()-> dijktrasShortestPath.findShortestPath(graph,"A","B"));
     }
 
     @Test

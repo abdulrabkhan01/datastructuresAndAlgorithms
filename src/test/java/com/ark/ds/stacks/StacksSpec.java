@@ -13,7 +13,7 @@ public class StacksSpec {
         //Given - An Empty Stack
         IStack<String> stack = new Stack<>(1);
         //When user tries to do the POP operation
-        assertThrows(ElementNotFoundException.class,()-> {stack.pop();});
+        assertThrows(ElementNotFoundException.class, stack::pop);
         //Exception should be encountered
     }
 
@@ -56,7 +56,7 @@ public class StacksSpec {
         IStack<String> stack = new Stack<>(1);
         //When no elements present
         //Then isEmpty Method should return true
-        assertTrue(stack.size()==0);
+        assertEquals(stack.size(), 0);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class StacksSpec {
         //When an element added
         stack.push("A");
         //Then isEmpty Method should return false
-        assertTrue(stack.size()==1);
+        assertEquals(stack.size(), 1);
     }
 
     @Test

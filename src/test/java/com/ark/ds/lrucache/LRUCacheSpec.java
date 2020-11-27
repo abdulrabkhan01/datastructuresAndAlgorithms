@@ -11,18 +11,18 @@ public class LRUCacheSpec {
 
     @Test
     public void zeroSizeMapCreationSpec() {
-        assertThrows(IllegalArgumentException.class ,() -> {new LRUCache<>(0);});
+        assertThrows(IllegalArgumentException.class ,() -> new LRUCache<>(0));
     }
 
     @Test
     public void negativeSizeMapCreationSpec() {
-        assertThrows(IllegalArgumentException.class ,() -> {new LRUCache<>(-1);});
+        assertThrows(IllegalArgumentException.class ,() -> new LRUCache<>(-1));
     }
 
     @Test
     public void emptyMapSizeShouldReturnZero() {
         ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
-        assertTrue(lruCache.size()==0);
+        assertEquals(lruCache.size(), 0);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class LRUCacheSpec {
     public void nonEmptyMapShouldReturnActualSize() {
         ILRUCache<String, Integer> lruCache = new LRUCache<>(1);
         lruCache.put("Key",1);
-        assertTrue(lruCache.size()==1);
+        assertEquals(lruCache.size(), 1);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class LRUCacheSpec {
         for(int i=0; i< maxCapacity+1;i++) {
             lruCache.put("K"+i,i);
         }
-        assertTrue(lruCache.size()==maxCapacity);
+        assertEquals(maxCapacity, lruCache.size());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class LRUCacheSpec {
         lruCache.printData();
         assertTrue(lruCache.containsKey("B"));
         lruCache.printData();
-        assertTrue(lruCache.get("A")==3);
+        assertEquals((int) lruCache.get("A"), 3);
         lruCache.printData();
     }
 
@@ -123,8 +123,8 @@ public class LRUCacheSpec {
         lruCache.printData();
         assertTrue(lruCache.containsKey("A"));
         lruCache.printData();
-        assertTrue(lruCache.get("A")==3);
-        assertTrue(lruCache.size()==1);
+        assertEquals((int) lruCache.get("A"), 3);
+        assertEquals(lruCache.size(), 1);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class LRUCacheSpec {
         lruCache.put("C",4);
         lruCache.printData();
         assertTrue(lruCache.containsKey("A"));
-        assertTrue(lruCache.get("A")==3);
+        assertEquals((int) lruCache.get("A"), 3);
         lruCache.printData();
         assertTrue(lruCache.containsKey("C"));
         assertFalse(lruCache.containsKey("B"));
@@ -163,8 +163,8 @@ public class LRUCacheSpec {
         assertTrue(lruCache.containsKey("B"));
         assertTrue(lruCache.containsKey("C"));
         assertTrue(lruCache.containsKey("D"));
-        assertTrue(lruCache.getHeadKey()=="D");
-        assertTrue(lruCache.getTailKey()=="C");
+        assertSame("D", lruCache.getHeadKey());
+        assertSame("C", lruCache.getTailKey());
     }
 
     @Test
@@ -186,7 +186,7 @@ public class LRUCacheSpec {
         assertTrue(lruCache.containsKey("F"));
         assertTrue(lruCache.containsKey("E"));
         assertTrue(lruCache.containsKey("D"));
-        assertTrue(lruCache.getHeadKey()=="F");
-        assertTrue(lruCache.getTailKey()=="D");
+        assertSame("F", lruCache.getHeadKey());
+        assertSame("D", lruCache.getTailKey());
     }
 }

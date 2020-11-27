@@ -102,10 +102,9 @@ public class BinaryTree<E> implements IBinaryTree<E> {
     }
 
     private final class TreeNode {
-        final E data;
+        E data;
         TreeNode left;
         TreeNode right;
-
         public TreeNode(E data) {
             this.data = data;
         }
