@@ -9,11 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class QuickSortObject<ObjectType extends Comparable> {
 
-    public void sort(ObjectType a[]) {
+    public void sort(ObjectType[] a) {
         quickSort(a, 0, a.length - 1);
     }
 
-    private void quickSort(ObjectType a[], int start, int end) {
+    private void quickSort(ObjectType[] a, int start, int end) {
         if (start == end) return;
         if (start < end) {
             int pivot = partitionArrayOverRandomPivot(a, start, end);
@@ -51,6 +51,7 @@ public class QuickSortObject<ObjectType extends Comparable> {
         int indexToFindPivotCorrectPos = start + 1;
         //Find Correct Location for the Pivot
         for (int nextIndex = start + 1; nextIndex <= end; nextIndex++) {
+            //noinspection unchecked
             if (a[nextIndex].compareTo(pivot) < 0) {
                 swap(a, nextIndex, indexToFindPivotCorrectPos);
                 indexToFindPivotCorrectPos++;

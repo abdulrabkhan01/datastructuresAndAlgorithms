@@ -10,11 +10,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public enum QuickSort {
     INSTANCE;
 
-    public void sort(int a[]) {
+    public void sort(int[] a) {
         quickSort(a, 0, a.length - 1);
     }
 
-    private void quickSort(int a[], int start, int end) {
+    private void quickSort(int[] a, int start, int end) {
         if (start == end) return;
         if (start < end) {
             int pivot = partitionArrayOverRandomPivot(a, start, end);

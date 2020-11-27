@@ -161,7 +161,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
      * Doubly linked list implementation, to store the most recently used node at the head of the list.
      */
     private static class LinkedListNode<K, V> {
-        K key;
+        final K key;
         V data;
         LinkedListNode<K, V> next;
         LinkedListNode<K, V> prev;

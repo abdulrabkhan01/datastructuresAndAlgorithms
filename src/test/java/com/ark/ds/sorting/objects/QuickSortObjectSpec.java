@@ -1,6 +1,5 @@
 package com.ark.ds.sorting.objects;
 
-import com.ark.ds.sorting.QuickSort;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;

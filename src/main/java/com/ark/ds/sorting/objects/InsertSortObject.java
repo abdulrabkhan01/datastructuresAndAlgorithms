@@ -9,6 +9,7 @@ public class InsertSortObject<ObjectType extends Comparable> {
         for (int currentIndex = 1; currentIndex < array.length; currentIndex++) {
             ObjectType currentElement = array[currentIndex];
             int indexToCompare = currentIndex;
+            //noinspection unchecked
             while (indexToCompare > 0 && array[indexToCompare - 1].compareTo(currentElement) > 0) {
                 array[indexToCompare] = array[--indexToCompare]; // Perform Shifting to make place for current element.
             }

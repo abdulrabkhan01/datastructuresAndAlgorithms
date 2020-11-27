@@ -102,7 +102,7 @@ public class BinaryTree<E> implements IBinaryTree<E> {
     }
 
     private final class TreeNode {
-        E data;
+        final E data;
         TreeNode left;
         TreeNode right;
 

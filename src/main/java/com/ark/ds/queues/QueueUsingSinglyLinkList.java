@@ -58,7 +58,7 @@ public class QueueUsingSinglyLinkList<T> implements IQueue<T> {
     }
 
     private class Node {
-        T data;
+        final T data;
         Node next;
 
         public Node(T data) {

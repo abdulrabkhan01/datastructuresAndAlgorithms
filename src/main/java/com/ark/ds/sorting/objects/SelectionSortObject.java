@@ -12,6 +12,7 @@ public class SelectionSortObject<ObjectType extends Comparable> {
             int minIndex = i;
             ObjectType min = a[i];
             for (int j = i + 1; j < a.length; j++) {
+                //noinspection unchecked
                 if (a[j].compareTo(min) < 0) {
                     min = a[j];
                     minIndex = j;

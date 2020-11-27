@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author AbdulR
  */
 public class BalanceParenthesisSpec {
-    BalanceParenthesisProblem balanceParenthesis = BalanceParenthesisProblem.INSTANCE;
+    private final BalanceParenthesisProblem balanceParenthesis = BalanceParenthesisProblem.INSTANCE;
 
     @Test
     public void testEmptyString() {

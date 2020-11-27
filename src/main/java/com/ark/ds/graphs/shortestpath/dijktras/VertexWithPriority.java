@@ -3,7 +3,7 @@ package com.ark.ds.graphs.shortestpath.dijktras;
 import com.ark.ds.graphs.Vertex;
 
 public class VertexWithPriority implements  Comparable<VertexWithPriority>{
-    private Vertex vertex;
+    private final Vertex vertex;
     private Integer priority =0;
 
     public VertexWithPriority(Vertex vertex, Integer priority) {

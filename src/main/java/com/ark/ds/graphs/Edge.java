@@ -17,10 +17,6 @@ public class Edge {
         this.cost = cost;
     }
 
-    public Vertex getStart() {
-        return start;
-    }
-
     public Vertex getEnd() {
         return end;
     }

@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class Graph implements IGraph {
 
-    private Map<Vertex, List<Edge>> verticesMap = new HashMap<>();
+    private final Map<Vertex, List<Edge>> verticesMap = new HashMap<>();
 
     public void addVertex(String label) {
         Vertex vertex = new Vertex(label);

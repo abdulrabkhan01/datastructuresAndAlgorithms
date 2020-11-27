@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author AbdulR
  */
 public class StringSubSequenceSpec {
-    StringSubSequence stringSubSequence = StringSubSequence.INSTANCE;
+   private final StringSubSequence stringSubSequence = StringSubSequence.INSTANCE;
 
     @Test
     public void emptyStringSpec() {
