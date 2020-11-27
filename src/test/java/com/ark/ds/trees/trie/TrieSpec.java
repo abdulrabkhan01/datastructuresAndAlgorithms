@@ -39,4 +39,16 @@ public class TrieSpec {
         iTrie.addWord("IMPOSSIBLE");
         assertTrue(iTrie.checkValidWord("Practice"));
     }
+
+    @Test void triesDoesNotContainsWordSpec1() {
+        ITrie iTrie = new Trie();
+        iTrie.addWord("Practice");
+        iTrie.addWord("Makes");
+        iTrie.addWord("Perfect");
+        iTrie.addWord("AND");
+        iTrie.addWord("NOTHING");
+        iTrie.addWord("IS");
+        iTrie.addWord("IMPOSSIBLE");
+        assertFalse(iTrie.checkValidWord("Practices"));
+    }
 }
