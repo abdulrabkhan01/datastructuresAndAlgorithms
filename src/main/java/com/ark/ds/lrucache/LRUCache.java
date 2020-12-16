@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author AbdulR
  */
 public class LRUCache<K, V> implements ILRUCache<K, V> {
+    public static final String STR = "->";
     private int size = 0;
     private final int capacity;
     //Map bounded by max capacity defined by the constructor.
@@ -141,7 +142,7 @@ public class LRUCache<K, V> implements ILRUCache<K, V> {
         StringBuilder data = new StringBuilder();
         LinkedListNode<K,V> temp = head;
         while(temp != null) {
-            data.append(temp.toString()).append("->");
+            data.append(temp.toString()).append(STR);
             temp = temp.next;
         }
         System.out.println(data);
