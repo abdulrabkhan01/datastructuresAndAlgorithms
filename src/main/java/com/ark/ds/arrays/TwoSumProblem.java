@@ -14,42 +14,19 @@ public class TwoSumProblem {
         int[] output = new int[2];
         output[0] = -1;
         output[1] = -1;
-        Map<Integer, Element> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < array.length; i++) {
             Integer diff = value - array[i];
-            Element matchedElement = map.get(diff);
+            Integer matchedElement = map.get(diff);
             if (matchedElement != null) {
                 output[0] = i;
-                output[1] = matchedElement.index;
+                output[1] = matchedElement;
                 break;
             }
-            //Otherwise
-            Element element = new Element();
-            element.index = i;
-            element.value = array[i];
-            map.put(array[i], element);
+            map.put(array[i], i);
         }
         return output;
-    }
-
-    private static class Element {
-        int value;
-        int index;
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Element element = (Element) o;
-            return value == element.value &&
-                    index == element.index;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(value, index);
-        }
     }
 
     public static void main(String[] args) {
