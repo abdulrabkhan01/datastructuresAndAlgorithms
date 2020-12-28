@@ -22,7 +22,7 @@ public class MinMeetingRoomsProblem {
             Meeting nextMeeting = meetings.get(i);
             //Check if this meeting overlaps with the already scheduled meeting
             //if overlapped then we require separate meeting room
-            if (nextMeeting.getStart().compareTo(priorityQueue.peek()) < 0) {
+            if (checkMeetingOverlap(priorityQueue, nextMeeting)) {
                 minMeetingRooms++;
             } else {
                 //otherwise remove the last element from priority queue
@@ -32,6 +32,10 @@ public class MinMeetingRoomsProblem {
             priorityQueue.offer(nextMeeting.getEnd());
         }
         return minMeetingRooms;
+    }
+
+    private boolean checkMeetingOverlap(PriorityQueue<LocalTime> priorityQueue, Meeting nextMeeting) {
+        return priorityQueue.peek() != null && nextMeeting.getStart().compareTo(priorityQueue.peek()) < 0;
     }
 
     public static void main(String[] args) {
