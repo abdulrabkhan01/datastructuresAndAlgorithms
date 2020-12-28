@@ -48,7 +48,7 @@ public class KnapSackProblemGreedy {
 
 class Item {
     private final String name;
-    private int quantity;
+    private final int quantity;
     //Total cost for given quantity
     private final double cost;
 
@@ -58,10 +58,6 @@ class Item {
         this.cost = cost;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public String toString() {
         return "Item{" +
@@ -69,10 +65,6 @@ class Item {
                 ", quantity=" + quantity +
                 ", cost=" + cost +
                 '}';
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getQuantity() {
