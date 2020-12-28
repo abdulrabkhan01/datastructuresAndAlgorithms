@@ -3,16 +3,18 @@ package com.ark.ds.trees.binarytrees.segementtrees;
 import java.util.Arrays;
 
 public class SegmentTree {
-    private int[] segments;
+    private final int[] segments;
+    private final int[] origArray;
 
     public SegmentTree(int[] origArray) {
         int origArrayLength = origArray.length;
         int segmentTreeLength = getSegmentTreeLen(origArrayLength);
         segments = new int[segmentTreeLength];
-        buildTree(segments, origArray);
+        this.origArray=origArray;
+        buildTree(origArray);
     }
 
-    private void buildTree(int[] segments, int[] origArray) {
+    private void buildTree(int[] origArray) {
         buildTreeRecursive(origArray, 0, origArray.length - 1, 0); //Start with 0th index as root
     }
 
@@ -46,7 +48,7 @@ public class SegmentTree {
         //Else recursively search in left or right sub tress
         int mid = low + (high - low) / 2;
         return sumQueryRecursive(low, mid, qlow, qhigh, current * 2 + 1)
-                + sumQueryRecursive(mid + 1, high, qlow, qhigh, current * 2 + 2);
+             + sumQueryRecursive(mid + 1, high, qlow, qhigh, current * 2 + 2);
     }
 
     private int getSegmentTreeLen(int origArrayLength) {
@@ -67,6 +69,30 @@ public class SegmentTree {
         return 2 * (int) (Math.pow(2, height));
     }
 
+    public void update(int index, int value) {
+        updateRecursive(0, origArray.length-1, index, value, 0 );
+    }
+
+    private void updateRecursive(int low, int high, int index, int value, int current) {
+        if(low==high) {
+            //Leaf Node
+            segments[current] = value;
+            origArray[index] = value;
+            return;
+        }
+        int mid = low + (high - low)/2;
+
+        if (index >=low && index < mid) {
+            //left subtree
+            updateRecursive(low,mid, index,value, current* 2 +1);
+        } else {
+            //right subtree
+            updateRecursive(mid+1, high, index, value , current * 2 + 2);
+        }
+        //Recalculate the sum
+        segments[current] = segments[current*2+1] + segments[current*2+2];
+    }
+
     public void print() {
         StringBuilder sb = new StringBuilder();
         Arrays.stream(segments).forEach(s -> sb.append(" ").append(s));
@@ -76,7 +102,7 @@ public class SegmentTree {
 
     public static void main(String[] args) {
         int[] a = {1, 3, 5, 7, 9, 11};
-        Arrays.stream(a).forEach(i -> System.out.println(i));
+        Arrays.stream(a).forEach(System.out::println);
         SegmentTree segmentTree = new SegmentTree(a);
         segmentTree.print();
         System.out.println("sum Query 0 -> 0 " + segmentTree.sumQuery(0, a.length - 1, 0, 0));
@@ -87,6 +113,9 @@ public class SegmentTree {
         System.out.println("sum Query 0 -> 5 " + segmentTree.sumQuery(0, a.length - 1, 0, 5));
         System.out.println("sum Query 1 -> 3 " + segmentTree.sumQuery(0, a.length - 1, 1, 3));
         System.out.println("sum Query 2 -> 5 " + segmentTree.sumQuery(0, a.length - 1, 2, 5));
+        segmentTree.print();
+        segmentTree.update(5, 12);
+        segmentTree.print();
     }
 }
 
